@@ -1,6 +1,8 @@
 document.getElementById('file-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
+    const viewer = document.getElementById('viewer');
     if (file) {
+        viewer.classList.add('loading');
         const reader = new FileReader();
         reader.onload = function(e) {
             const epubContent = e.target.result;
@@ -10,20 +12,19 @@ document.getElementById('file-input').addEventListener('change', function(event)
                 height: "100%"
             });
 
-            // Menampilkan konten setelah navigasi dimuat
             book.loaded.navigation.then(function() {
                 rendition.display();
+                viewer.classList.remove('loading');
             }).catch(function(err) {
                 console.error("Error loading navigation:", err);
+                viewer.classList.remove('loading');
             });
 
-            // Resize rendition saat ukuran jendela berubah
             window.addEventListener('resize', function() {
                 rendition.resize();
             });
         };
 
-        // Membaca file sebagai ArrayBuffer
         reader.readAsArrayBuffer(file);
     } else {
         console.error("No file selected.");
