@@ -10,14 +10,22 @@ document.getElementById('file-input').addEventListener('change', function(event)
                 height: "100%"
             });
 
+            // Menampilkan konten setelah navigasi dimuat
             book.loaded.navigation.then(function() {
                 rendition.display();
+            }).catch(function(err) {
+                console.error("Error loading navigation:", err);
             });
 
+            // Resize rendition saat ukuran jendela berubah
             window.addEventListener('resize', function() {
                 rendition.resize();
             });
         };
+
+        // Membaca file sebagai ArrayBuffer
         reader.readAsArrayBuffer(file);
+    } else {
+        console.error("No file selected.");
     }
 });
