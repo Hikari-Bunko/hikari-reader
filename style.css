@@ -2,6 +2,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 20px;
 }
+.responsive-viewer {
+    width: 100%;
+    height: calc(100vh - 100px); /* Mengurangi tinggi untuk header */
+    max-width: 800px; /* Maksimal lebar untuk tampilan desktop */
+    margin: auto; /* Pusatkan tampilan */
+}
 #viewer {
     border: 1px solid #ccc;
     padding: 10px;
