@@ -2,7 +2,7 @@ document.getElementById('file-input').addEventListener('change', function(event)
     const file = event.target.files[0];
     const viewer = document.getElementById('viewer');
     if (file) {
-        viewer.classList.add('loading');
+        viewer.classList.add('loading'); // Menambahkan kelas loading
         const reader = new FileReader();
         reader.onload = function(e) {
             const epubContent = e.target.result;
@@ -14,10 +14,10 @@ document.getElementById('file-input').addEventListener('change', function(event)
 
             book.loaded.navigation.then(function() {
                 rendition.display();
-                viewer.classList.remove('loading');
+                viewer.classList.remove('loading'); // Menghapus kelas loading
             }).catch(function(err) {
                 console.error("Error loading navigation:", err);
-                viewer.classList.remove('loading');
+                viewer.classList.remove('loading'); // Menghapus kelas loading
             });
 
             window.addEventListener('resize', function() {
