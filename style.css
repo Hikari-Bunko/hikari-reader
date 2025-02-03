@@ -1,20 +1,39 @@
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    margin: 20px 0;
+    text-align: center;
+    color: #333;
 }
 
-.responsive-viewer {
-    width: 100%;
-    height: calc(100vh - 100px); /* Mengurangi tinggi untuk header */
-    max-width: 800px; /* Maksimal lebar untuk tampilan desktop */
-    margin: auto; /* Pusatkan tampilan */
-    border: 1px solid #ccc; /* Tambahkan border untuk tampilan */
-    overflow: hidden; /* Sembunyikan overflow */
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.viewer {
+    border: 1px solid #ccc;
+    height: 500px;
+    overflow: auto;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.viewer.loading {
+    opacity: 0.5;
 }
