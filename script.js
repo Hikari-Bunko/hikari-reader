@@ -1,3 +1,6 @@
+let book;
+let rendition;
+
 document.getElementById('file-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
     const viewer = document.getElementById('viewer');
@@ -6,8 +9,8 @@ document.getElementById('file-input').addEventListener('change', function(event)
         const reader = new FileReader();
         reader.onload = function(e) {
             const epubContent = e.target.result;
-            const book = ePub(epubContent);
-            const rendition = book.renderTo("viewer", {
+            book = ePub(epubContent);
+            rendition = book.renderTo("viewer", {
                 width: "100%",
                 height: "100%"
             });
@@ -28,5 +31,18 @@ document.getElementById('file-input').addEventListener('change', function(event)
         reader.readAsArrayBuffer(file);
     } else {
         console.error("No file selected.");
+    }
+});
+
+// Menambahkan event listener untuk tombol navigasi
+document.getElementById('prev-button').addEventListener('click', function() {
+    if (rendition) {
+        rendition.prev();
+    }
+});
+
+document.getElementById('next-button').addEventListener('click', function() {
+    if (rendition) {
+        rendition.next();
     }
 });
