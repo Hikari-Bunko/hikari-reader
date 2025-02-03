@@ -1,1 +1,1 @@
-# hikaro-reader
+# hikari-reader
